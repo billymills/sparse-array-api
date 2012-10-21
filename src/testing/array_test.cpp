@@ -11,17 +11,10 @@ using std::endl;
 
 int main(){
 
-	cout << "hello world" << endl;
 	TwoDArray<int>* newArray = new TwoDArray<int>(10, 10, 0);
-	
-	cout << "array created" << endl;
 
+	newArray->insert(1,1,5);
 	cout << newArray->access(1,1) << endl;
-	delete newArray;	
-
-
-	TwoDArray<int>* nextArray = new TwoDArray<int>(5,5,1);
-	cout << nextArray->access(3,3) << endl;
-	delete nextArray;
+	delete newArray;
 
 }

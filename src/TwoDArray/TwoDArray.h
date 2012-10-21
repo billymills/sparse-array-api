@@ -10,6 +10,7 @@ template <typename T>
 class TwoDArray{
 	private:
 		T** myArray;
+		//T default;
 		int row;
 		int column;
 	public:

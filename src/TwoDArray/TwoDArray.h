@@ -3,14 +3,14 @@
 //author:	Billy Mills
 //date:		Fall 2012
 
-#ifndef __TWO_D_ARRAY_H__	
-#define __TWO_D_ARRAY_H__	
+#ifndef __TWODARRAY_H__	
+#define __TWODARRAY_H__	
 
 template <typename T>
 class TwoDArray{
 	private:
 		T** myArray;
-		//T default;
+		T defaultValue;
 		int row;
 		int column;
 	public:

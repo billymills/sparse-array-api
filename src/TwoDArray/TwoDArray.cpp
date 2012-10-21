@@ -13,7 +13,7 @@ using std::endl;
 //constructor
 template <typename T>
 TwoDArray<T>::TwoDArray(int r, int c, T def){
-	//default = def;
+	defaultValue = def;
 	//cout << "in const" << endl;
 	row = r;
 	column = c;
@@ -57,7 +57,7 @@ void TwoDArray<T>::insert(int r, int c, T value){
 //set the value at index r, c back to default value
 template <typename T>
 void TwoDArray<T>::remove(int r, int c){
-
+	myArray[c][r] = defaultValue;
 }
 
 //print the TwoDArray

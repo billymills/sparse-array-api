@@ -51,7 +51,7 @@ T TwoDArray<T>::access(int r, int c){
 //insert the value v at index r, c
 template <typename T>
 void TwoDArray<T>::insert(int r, int c, T value){
-
+	myArray[c][r] = value;
 }
 
 //set the value at index r, c back to default value

@@ -15,6 +15,8 @@ int main(){
 
 	newArray->insert(1,1,5);
 	cout << newArray->access(1,1) << endl;
+	newArray->remove(1,1);
+	cout << newArray->access(1,1) << endl;
 	delete newArray;
 
 }

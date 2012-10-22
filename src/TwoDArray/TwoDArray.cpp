@@ -63,7 +63,13 @@ void TwoDArray<T>::remove(int r, int c){
 //print the TwoDArray
 template <typename T>
 void TwoDArray<T>::print(){
+	for(int i=0; i<column; ++i){
 
+		for(int j=0; j<row; ++j){
+			cout << myArray[i][j];
+		}
+		cout << endl;
+	}
 }
 
 template class TwoDArray<int>;

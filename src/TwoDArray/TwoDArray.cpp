@@ -4,6 +4,7 @@
 //date:		Fall 2012
 
 #include "TwoDArray.h"
+#include <string>
 #include <iostream>
 #include <assert.h>
 
@@ -73,3 +74,4 @@ void TwoDArray<T>::print(){
 }
 
 template class TwoDArray<int>;
+template class TwoDArray<std::string>;

@@ -20,4 +20,9 @@ int main(){
 	newArray->print();
 	delete newArray;
 
+	TwoDArray<std::string>* nextArray = new TwoDArray<std::string>(5,5, "hi");
+	nextArray->insert(2,2, "bye");
+	nextArray->print();
+	delete nextArray;
+
 }

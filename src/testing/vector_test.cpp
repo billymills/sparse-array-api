@@ -14,4 +14,5 @@ int main(){
 	newVector->insert(0,0,1);
 	cout << newVector->access(0,0) << endl;
 	newVector->print();
+	return 0;
 }

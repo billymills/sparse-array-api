@@ -20,12 +20,8 @@ Vectors<T>::Vectors(int r, int c, T def){
 	row = r;
 	column = c;
 	
-	//create vector to be inserted into myArray
-	vector<T> newVector;
-	newVector.resize(r, defaultValue);
-	
 	for(int i=0; i<c; ++i){
-		myArray.push_back(newVector);
+		myArray.push_back(vector<T>(r, defaultValue));
 	}
 }
 

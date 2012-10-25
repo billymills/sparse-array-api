@@ -12,8 +12,8 @@ Node<T>::Node(int r, int c, T v){
 	value = v;
 	row = r;
 	column= c;
-	rowPtr = 0;
-	colPtr = 0;
+	rightPtr = 0;
+	downPtr = 0;
 }
 
 template <typename T>
@@ -27,23 +27,23 @@ T Node<T>::getValue(){
 }
 
 template <typename T>
-Node<T>*& Node<T>::getNextColumn(){
-	return colPtr;
+Node<T>*& Node<T>::getNextRight(){
+	return rightPtr;
 }
 
 template <typename T>
-Node<T>*& Node<T>::getNextRow(){
-	return rowPtr;
+Node<T>*& Node<T>::getNextDown(){
+	return downPtr;
 }
 
 template <typename T>
-void Node<T>::setNextRow(Node<T>& r){
-	rowPtr = &r;
+void Node<T>::setNextRight(Node<T>& r){
+	rightPtr = &r;
 }
 
 template <typename T>
-void Node<T>::setNextColumn(Node<T>& c){
-	colPtr = &c;
+void Node<T>::setNextDown(Node<T>& d){
+	downPtr = &d;
 }
 
 template <typename T>

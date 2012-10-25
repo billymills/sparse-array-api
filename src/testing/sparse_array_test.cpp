@@ -16,7 +16,8 @@ using std::endl;
 int main(){
 	SparseArray<int>* newSparse = new SparseArray<int>(10,10,1);
 	cout << newSparse->getNumRows() << endl;
-	cout << "hello" << endl;
+	cout << newSparse->getNumColumns() << endl;
+	cout << newSparse->access(0,0) << endl;
 	//delete newSparse;
 	return 0;
 }

@@ -12,17 +12,17 @@ class Node {
 		int row;
 		int column;
 		T value;
-		Node<T>* colPtr;
-		Node<T>* rowPtr;
+		Node<T>* rightPtr;
+		Node<T>* downPtr;
 
 	public:
 		Node<T>(int r, int c, T v); //constructor
 		~Node<T>(); //destructor
 		T getValue(); //return value stored in node 
-		Node*& getNextRow();
-		Node*& getNextColumn();
-		void setNextRow(Node<T>& r);
-		void setNextColumn(Node<T>& c);
+		Node*& getNextRight();
+		Node*& getNextDown();
+		void setNextRight(Node<T>& r);
+		void setNextDown(Node<T>& d);
 		int getRowNum(); //return row number
 		int getColumnNum(); //return column number
 

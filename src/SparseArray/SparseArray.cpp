@@ -35,7 +35,18 @@ SparseArray<T>::~SparseArray(){
 
 template <typename T>
 void SparseArray<T>::insert(int r, int c, T v){
-
+	/*
+	//Node<T> newNode = new Node<T>
+	if(newSparse[c]==0) {
+		//this is the first node in column
+		newSparse[c]->setNext(&newNode);
+	}
+	else {
+		//its not the first element
+		Node<T>* curr = newSparse[c];
+		while (newSparse[c]->getNext);
+	}
+*/
 }
 
 template <typename T>

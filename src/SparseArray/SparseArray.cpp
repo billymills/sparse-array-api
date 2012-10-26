@@ -12,17 +12,19 @@ using std::endl;
 
 //constructor
 template <typename T>
-SparseArray<T>::SparseArray(int r, int c, T v){
+SparseArray<T>::SparseArray(int c, int r, T v){
 	numRows = r;
 	numColumns = c;
 	defaultValue = v;
 	rows = new Node<T>*[numRows]; //new array for rows
 	columns = new Node<T>*[numColumns]; //new array for columns
 	
+	//initialize all column ptrs to 0
 	for(int i=0; i<numColumns; ++i){
 		columns[i] = 0;
 	}
 
+	//initialize all row ptrs to 0
 	for(int i=0; i<numRows; ++i){
 		rows[i] = 0;
 	}
@@ -34,27 +36,33 @@ SparseArray<T>::~SparseArray(){
 }
 
 template <typename T>
-void SparseArray<T>::insert(int r, int c, T v){
+void SparseArray<T>::insert(int c, int r, T v){
 	
-	Node<T>* newNode = new Node<T>(r, c, v);
-	Node<T>** currCol = &columns[c];
-	Node<T>** currRow = &rows[r];
+	Node<T>* newNode = new Node<T>(c, r, v);  //create new node to be inserted
+	Node<T>** currCol = &columns[c]; //ptr to ptr to column array
+	Node<T>** currRow = &rows[r]; //ptr to ptr to row array
 	if(*currRow==0) {
+		*currRow = newNode;
+	}
+	else {
+		while(*currRow != 0 && (*currRow)->getValue() < v) {
+			currRow = &(*currRow)->getNextRight();
+		}
 		*currRow = newNode;
 	}
 	if(*currCol==0) {
 		*currCol = newNode;
 	}
-	//else {
-	//	//its not the first element
-	//	Node<T>* curr = newSparse[c];
-	//	while (newSparse[c]->getNext);
-	//}
-
+	else {
+		while(*currCol != 0 && (*currCol)->getValue() < v) {
+			currCol = &(*currCol)->getNextRight();
+		}
+		*currCol = newNode;
+	}
 }
 
 template <typename T>
-T SparseArray<T>::access(int r, int c){
+T SparseArray<T>::access(int c, int r){
 	Node<T>** currCol = &columns[c];
 	while((*currCol) != 0) {
 		if((*currCol)->getColumnNum() == c && (*currCol)->getRowNum() == r){
@@ -64,7 +72,7 @@ T SparseArray<T>::access(int r, int c){
 }
 
 template <typename T>
-void SparseArray<T>::remove(int r, int c){
+void SparseArray<T>::remove(int c, int r){
 
 }
 

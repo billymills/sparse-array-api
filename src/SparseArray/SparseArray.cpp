@@ -37,19 +37,37 @@ SparseArray<T>::~SparseArray(){
 
 template <typename T>
 void SparseArray<T>::insert(int c, int r, T v){
-	
+	//need an assert here to make sure indices are not out of bounds
 	Node<T>* newNode = new Node<T>(c, r, v);  //create new node to be inserted
 	Node<T>** currCol = &columns[c]; //ptr to ptr to column array
 	Node<T>** currRow = &rows[r]; //ptr to ptr to row array
-	if(*currRow==0) {
+	/*
+	//if curr equals zero, nothing in the row, newNode should be first item
+	if(*currRow==0) { 
 		*currRow = newNode;
 	}
-	else {
-		while(*currRow != 0 && (*currRow)->getValue() < v) {
-			currRow = &(*currRow)->getNextRight();
+	//else the row is not empty so move through
+
+	else {  
+		while(*currRow != 0) {
+			//if current column num is less than newNode col keep moving
+			if ((*currRow)->getColumnNum() < c && (*currRow)->getNextRight() != 0){
+				currRow = &(*currRow)->getNextRight();
+			}
+			//when current column num is greater than newNode col
+			else {
+				(*currRow)->setNextRight(newNode);
+			}
 		}
-		*currRow = newNode;
 	}
+	*/
+	while(*currRow !=0 && (*currRow)->getColumnNum() < 0){
+		currRow = &((*currRow)->getNextRight());
+	}
+
+	newNode->setNextRight(**currRow);
+	*currRow = newNode;
+
 	if(*currCol==0) {
 		*currCol = newNode;
 	}

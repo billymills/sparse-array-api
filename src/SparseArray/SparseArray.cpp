@@ -37,10 +37,9 @@ template <typename T>
 void SparseArray<T>::insert(int r, int c, T v){
 	
 	Node<T>* newNode = new Node<T>(r, c, v);
-	Node<T>** currCol = &rows[c];
-	Node<T>** currRow = &columns[r];
+	Node<T>** currCol = &columns[c];
+	Node<T>** currRow = &rows[r];
 	if(*currRow==0) {
-		//this is the first node in column
 		*currRow = newNode;
 	}
 	if(*currCol==0) {
@@ -56,7 +55,12 @@ void SparseArray<T>::insert(int r, int c, T v){
 
 template <typename T>
 T SparseArray<T>::access(int r, int c){
-	return 0;
+	Node<T>** currCol = &columns[c];
+	while((*currCol) != 0) {
+		if((*currCol)->getColumnNum() == c && (*currCol)->getRowNum() == r){
+			return (*currCol)->getValue();
+		}
+	}
 }
 
 template <typename T>

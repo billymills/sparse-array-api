@@ -8,7 +8,7 @@
 #include "Node.h"
 
 template <typename T>
-Node<T>::Node(int r, int c, T v){
+Node<T>::Node(int c, int r, T v){
 	value = v;
 	row = r;
 	column= c;

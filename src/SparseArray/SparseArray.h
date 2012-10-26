@@ -21,11 +21,11 @@ class SparseArray {
 		T defaultValue;
 
 	public:
-		SparseArray<T>(int r, int c, T v); //constructor
+		SparseArray<T>(int c, int r, T v); //constructor
 		~SparseArray<T>(); //destructor
-		void insert(int r, int c, T v); //insert method
-		T access(int r, int c); //return value at given indices
-		void remove(int r, int c); //remove item at given indices
+		void insert(int c, int r, T v); //insert method
+		T access(int c, int r); //return value at given indices
+		void remove(int c, int r); //remove item at given indices
 		void print(); //print out entire array
 		int getNumRows();
 		int getNumColumns();

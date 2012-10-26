@@ -16,7 +16,7 @@ class Node {
 		Node<T>* downPtr;
 
 	public:
-		Node<T>(int r, int c, T v); //constructor
+		Node<T>(int c, int r, T v); //constructor
 		~Node<T>(); //destructor
 		T getValue(); //return value stored in node 
 		Node*& getNextRight();

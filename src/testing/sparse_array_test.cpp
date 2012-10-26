@@ -18,6 +18,8 @@ int main(){
 	cout << newSparse->getNumRows() << endl;
 	cout << newSparse->getNumColumns() << endl;
 	cout << newSparse->access(0,0) << endl;
+	newSparse->insert(0,0,5);
+	cout << newSparse->access(0,0) << endl;
 	//delete newSparse;
 	return 0;
 }

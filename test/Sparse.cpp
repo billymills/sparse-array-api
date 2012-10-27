@@ -10,25 +10,21 @@
 #include "../src/SparseArray/Node.h"
 #include <string>
 
-TEST(TwoDArray, InsertInt) {
-	TwoDArray<int>* newArray = new TwoDArray<int>(10,10,0);
-	newArray->insert(5,5,5);
-	EXPECT_EQ(5, newArray->access(5,5));
-	delete newArray;
-}
+TEST(TwoDArray, Insert) {
+	TwoDArray<int>* newInt = new TwoDArray<int>(10,10,0);
+	newInt->insert(5,5,5);
+	EXPECT_EQ(5, newInt->access(5,5));
+	delete newInt;
 
-TEST(TwoDArray, InsertString) {
-	TwoDArray<std::string>* newArray = new TwoDArray<std::string>(10,10,"null");
-	newArray->insert(5,5,"yo");
-	EXPECT_EQ("yo", newArray->access(5,5));
-	delete newArray;
-}
+	TwoDArray<std::string>* newString = new TwoDArray<std::string>(10,10,"null");
+	newString->insert(5,5,"yo");
+	EXPECT_EQ("yo", newString->access(5,5));
+	delete newString;
 
-TEST(TwoDArray, InsertDouble) {
-	TwoDArray<double>* newArray = new TwoDArray<double>(10,10,0.0);
-	newArray->insert(5,5,5.5);
-	EXPECT_EQ(5.5, newArray->access(5,5));
-	delete newArray;
+	TwoDArray<double>* newDouble = new TwoDArray<double>(10,10,0.0);
+	newDouble->insert(5,5,5.5);
+	EXPECT_EQ(5.5, newDouble->access(5,5));
+	delete newDouble;
 }
 
 TEST(TwoDArray, Remove) {
@@ -107,10 +103,27 @@ TEST(Vectors, Print) {
 	delete newVector;
 }
 
-TEST(Sparse, InsertInt) {
-	SparseArray<int>* newSparse = new SparseArray<int>(5,5,0);
-	newSparse->insert(0,0,5);
-	EXPECT_EQ(5, newSparse->access(0,0));
-	delete newSparse;
+
+//test insert into sparse array of int, double, string
+TEST(Sparse, Insert) {
+	SparseArray<int>* newInt= new SparseArray<int>(5,5,0);
+	newInt->insert(0,0,5);
+	EXPECT_EQ(5, newInt->access(0,0));
+	delete newInt;
+
+	SparseArray<double>* newDouble = new SparseArray<double>(5,6,0.0);
+	newDouble->insert(2,4,6.5);
+	EXPECT_EQ(6.5, newDouble->access(2,4));
+	delete newDouble;
+	
+	SparseArray<std::string>* newString = new SparseArray<std::string>(7,8,"null");
+	newString->insert(4,3,"howdy");
+	EXPECT_EQ("howdy", newString->access(4,3));
+	delete newString;
+
 }
+
+
+
+
 

@@ -30,10 +30,18 @@ TEST(TwoDArray, InsertDouble) {
 }
 
 TEST(TwoDArray, Remove) {
-	TwoDArray<int>* newArray = new TwoDArray<int>(5,5,1);
+	TwoDArray<int>* newArray = new TwoDArray<int>(5,5,0);
 	newArray->insert(2,3,4);
 	newArray->remove(2,3);
-	EXPECT_EQ(1, newArray->access(2,3));
+	EXPECT_EQ(0, newArray->access(2,3));
+	delete newArray;
+}
+
+TEST(TwoDArray, Access) {
+	TwoDArray<std::string>* newArray = new TwoDArray<std::string>(20,20,"null");
+	EXPECT_EQ("null", newArray->access(10,10));
+	newArray->insert(15,17,"howdy");
+	EXPECT_EQ("howdy", newArray->access(15,17));
 	delete newArray;
 }
 

@@ -24,7 +24,9 @@ int main(){
 	cout << newSparse->access(4,4) << endl;
 	cout << newSparse->access(0,1) << endl;
 	//cout << newSparse->access(5,5) << endl;
+	newSparse->print();
 	newSparse->remove(0,0);
+	newSparse->remove(0,1);
 	cout << newSparse->access(0,0) << endl;
 	newSparse->print();	
 	//delete newSparse;

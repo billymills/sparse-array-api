@@ -100,6 +100,18 @@ TEST(Vectors, Access) {
 	delete newVector;
 }
 
+TEST(Vectors, GetNumRows) {
+	Vectors<int>* newVector = new Vectors<int>(7,8,0);
+	EXPECT_EQ(8, newVector->getNumRows());
+	delete newVector;
+}
+
+TEST(Vectors, GetNumCols) {
+	Vectors<int>* newVector = new Vectors<int>(7,8,0);
+	EXPECT_EQ(7, newVector->getNumCols());
+	delete newVector;
+}
+
 TEST(Vectors, Print) {
 	Vectors<int>* newVector = new Vectors<int>(10,10,0);
 	newVector->insert(1,2,1);
@@ -110,7 +122,6 @@ TEST(Vectors, Print) {
 	newVector->print();
 	delete newVector;
 }
-
 
 //test insert into sparse array of int, double, string
 TEST(Sparse, Insert) {
@@ -128,7 +139,6 @@ TEST(Sparse, Insert) {
 	newString->insert(4,3,"howdy");
 	EXPECT_EQ("howdy", newString->access(4,3));
 	delete newString;
-
 }
 
 

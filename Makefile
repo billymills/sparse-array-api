@@ -16,10 +16,10 @@ $(BUILD)/array_test: $(TWODARRAY)/TwoDArray.cpp $(TWODARRAY)/TwoDArray.o
 $(BUILD)/vector_test: $(VECTORS)/Vectors.cpp $(VECTORS)/Vectors.o
 	cd $(TESTING); $(MAKE)
 
-$(BUILD)/sparse_array_test: $(SPARSEARRAY)/SparseArray.cpp $(SPARSEARRAY)/SparseArray.o
+$(BUILD)/sparse_array_test: $(SPARSEARRAY)/SparseArray.cpp $(SPARSEARRAY)/SparseArray.o $(SPARSEARRAY)/Node.cpp $(SPARSEARRAY)/Node.o
 	cd $(TESTING); $(MAKE)
 
-$(TEST)/sparse_test: $(TEST)/Sparse.cpp $(TWODARRAY)/TwoDArray.o
+$(TEST)/sparse_test: $(TEST)/Sparse.cpp $(TWODARRAY)/TwoDArray.o $(VECTORS)/Vectors.o $(SPARSEARRAY)/SparseArray.o $(SPARSEARRAY)/Node.o
 	cd $(TEST); $(MAKE)
 
 clean:

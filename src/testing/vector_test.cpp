@@ -24,5 +24,6 @@ int main(){
 		}
 	}
 	newVector->print();
+	delete newVector;
 	return 0;
 }

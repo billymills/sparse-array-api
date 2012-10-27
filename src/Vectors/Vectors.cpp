@@ -20,39 +20,36 @@ Vectors<T>::Vectors(int c, int r, T def){
 	defaultValue = def;
 	row = r;
 	column = c;
-	
-	for(int i=0; i<c; ++i){
-		myArray.push_back(vector<T>(r, defaultValue));
-	}
-
+	myArray = new vector<vector<T> >(c, vector<T>(r, defaultValue));
 }
 
 //destructor
 template <typename T>
 Vectors<T>::~Vectors(){
 	for(int i=0; i<column; ++i){
-			myArray.pop_back();
+		(*myArray).pop_back();
 	}
+	delete myArray;
 }
 
 //return value a given indices
 template <typename T>
 T Vectors<T>::access(int c, int r){
-	return myArray[c][r];
+	return (*myArray)[c][r];
 }
 
 //insert the value v at index c, r
 template <typename T>
 void Vectors<T>::insert(int c, int r, T value){
 	assert(r>=0 && c>=0);
-	myArray[c][r] = value;
+	(*myArray)[c][r] = value;
 }
 
 //set the value at index c,r back to default value
 template <typename T>
 void Vectors<T>::remove(int c, int r){
 	assert(r>=0 && c>=0);
-	myArray[c][r] = defaultValue;
+	(*myArray)[c][r] = defaultValue;
 }
 
 //print the TwoDArray

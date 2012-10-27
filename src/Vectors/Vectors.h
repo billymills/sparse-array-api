@@ -14,7 +14,7 @@ template <typename T>
 class Vectors{
 
 	private:
-		vector<vector<T> > myArray;
+		vector<vector<T> >* myArray;
 		T defaultValue;
 		int row;
 		int column;

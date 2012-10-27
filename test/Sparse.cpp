@@ -67,25 +67,21 @@ TEST(TwoDArray, Print) {
 }
 
 
-TEST(Vectors, InsertInt) {
-	Vectors<int>* newVector = new Vectors<int>(10, 10, 0);
-	newVector->insert(4,5,5);
-	EXPECT_EQ(5, newVector->access(4,5));
-	delete newVector;
-}
+TEST(Vectors, Insert) {
+	Vectors<int>* newInt = new Vectors<int>(10, 10, 0);
+	newInt->insert(4,5,5);
+	EXPECT_EQ(5, newInt->access(4,5));
+	delete newInt;
 
-TEST(Vectors, InsertString) {
-	Vectors<std::string>* newVector = new Vectors<std::string>(9, 18, "empty");
-	newVector->insert(4,5,"hello");
-	EXPECT_EQ("hello", newVector->access(4,5));
-	delete newVector;
-}
+	Vectors<std::string>* newString = new Vectors<std::string>(9, 18, "empty");
+	newString->insert(4,5,"hello");
+	EXPECT_EQ("hello", newString->access(4,5));
+	delete newString;
 
-TEST(Vectors, InsertDouble) {
-	Vectors<double>* newVector = new Vectors<double>(6, 7, 0.0);
-	newVector->insert(4,5,5.5);
-	EXPECT_EQ(5.5, newVector->access(4,5));
-	delete newVector;
+	Vectors<double>* newDouble = new Vectors<double>(6, 7, 0.0);
+	newDouble->insert(4,5,5.5);
+	EXPECT_EQ(5.5, newDouble->access(4,5));
+	delete newDouble;
 }
 
 TEST(Vectors, Remove) {

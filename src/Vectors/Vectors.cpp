@@ -30,7 +30,9 @@ Vectors<T>::Vectors(int c, int r, T def){
 //destructor
 template <typename T>
 Vectors<T>::~Vectors(){
-
+	for(int i=0; i<column; ++i){
+			myArray.pop_back();
+	}
 }
 
 //return value a given indices

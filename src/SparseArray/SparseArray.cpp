@@ -6,6 +6,7 @@
 #include "SparseArray.h"
 #include <iostream>
 #include <assert.h>
+#include <string>
 
 using std::cout;
 using std::endl;
@@ -134,3 +135,5 @@ int SparseArray<T>::getNumColumns(){
 }
 
 template class SparseArray<int>;
+template class SparseArray<double>;
+template class SparseArray<std::string>;

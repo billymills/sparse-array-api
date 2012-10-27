@@ -57,4 +57,5 @@ int Node<T>::getColumnNum(){
 }
 
 template class Node<int>;
+template class Node<double>;
 template class Node<std::string>;

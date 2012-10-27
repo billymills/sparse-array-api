@@ -8,11 +8,11 @@
 
 #include <vector>
 #include <string>
-
 #include "Node.h"
 
 template <typename T>
 class SparseArray {
+
 	private:
 		int numRows;
 		int numColumns;

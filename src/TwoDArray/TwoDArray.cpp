@@ -42,7 +42,7 @@ TwoDArray<T>::~TwoDArray(){
 	delete[] myArray;
 }
 
-//return value a given indices
+//return value at given indices
 template <typename T>
 T TwoDArray<T>::access(int c, int r){
 	return myArray[c][r];
@@ -64,7 +64,6 @@ void TwoDArray<T>::remove(int c, int r){
 template <typename T>
 void TwoDArray<T>::print(){
 	for(int i=0; i<column; ++i){
-
 		for(int j=0; j<row; ++j){
 			cout << access(i,j) << " ";
 		}

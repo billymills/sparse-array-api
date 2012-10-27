@@ -141,6 +141,47 @@ TEST(Sparse, Insert) {
 	delete newString;
 }
 
+/*
+TEST(Sparse, Remove) {
+	SparseArray<int>* newSparse = new SparseArray<int>(5,5,0);
+	newSparse->insert(2,3,4);
+	newSparser->remove(2,3);
+	EXPECT_EQ(0, newSparse->access(2,3));
+	delete newSparse;
+}
+*/
+
+TEST(Sparse, Access) {
+	SparseArray<std::string>* newSparse = new SparseArray<std::string>(20,20,"null");
+	EXPECT_EQ("null", newSparse->access(10,10));
+	newSparse->insert(15,17,"howdy");
+	EXPECT_EQ("howdy", newSparse->access(15,17));
+	delete newSparse;
+}
+
+TEST(Sparse, GetNumRows) {
+	SparseArray<int>* newSparse = new SparseArray<int>(7,8,0);
+	EXPECT_EQ(8, newSparse->getNumRows());
+	delete newSparse;
+}
+
+TEST(Sparse, GetNumCols) {
+	SparseArray<int>* newSparse = new SparseArray<int>(7,8,0);
+	EXPECT_EQ(7, newSparse->getNumColumns());
+	delete newSparse;
+}
+
+TEST(Sparse, Print) {
+	SparseArray<int>* newSparse = new SparseArray<int>(10,10,0);
+	newSparse->insert(1,2,1);
+	newSparse->insert(9,8,2);
+	newSparse->insert(7,2,3);
+	newSparse->insert(6,4,4);
+	newSparse->insert(0,8,5);
+	newSparse->print();
+	delete newSparse;
+}
+
 
 
 

@@ -12,11 +12,13 @@ using std::vector;
 
 template <typename T>
 class Vectors{
+
 	private:
 		vector<vector<T> > myArray;
 		T defaultValue;
 		int row;
 		int column;
+
 	public:
 		Vectors<T>(int c, int r, T def); //constructor
 		~Vectors<T>(); //destructor
@@ -26,6 +28,7 @@ class Vectors{
 		void print(); //print the array
 		int getNumRows(); //getter for iteration
 		int getNumCols(); //getter for iteration
+
 };
 
 #endif

@@ -39,14 +39,14 @@ T Vectors<T>::access(int c, int r){
 	return myArray[c][r];
 }
 
-//insert the value v at index r, c
+//insert the value v at index c, r
 template <typename T>
 void Vectors<T>::insert(int c, int r, T value){
 	assert(r>=0 && c>=0);
 	myArray[c][r] = value;
 }
 
-//set the value at index r, c back to default value
+//set the value at index c,r back to default value
 template <typename T>
 void Vectors<T>::remove(int c, int r){
 	assert(r>=0 && c>=0);
@@ -56,12 +56,11 @@ void Vectors<T>::remove(int c, int r){
 //print the TwoDArray
 template <typename T>
 void Vectors<T>::print(){
+	assert(column>0 && row>0);
 	for(int i=0; i<column; ++i){
-
 		for(int j=0; j<row; ++j){
 			cout << access(i,j) << " ";
 		}
-
 		cout << endl;
 	}
 }

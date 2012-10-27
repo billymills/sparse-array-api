@@ -8,6 +8,7 @@
 
 template <typename T>
 class Node {
+
 	private:
 		int row;
 		int column;

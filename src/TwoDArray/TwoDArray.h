@@ -8,11 +8,13 @@
 
 template <typename T>
 class TwoDArray{
+
 	private:
 		T** myArray;
 		T defaultValue;
 		int row;
 		int column;
+
 	public:
 		TwoDArray<T>(int c, int r, T def); //constructor
 		~TwoDArray<T>(); //destructor
@@ -22,6 +24,7 @@ class TwoDArray{
 		void print(); //print the array
 		int getNumRows(); //getter for iteration
 		int getNumCols(); //getter for iteration
+
 };
 
 #endif

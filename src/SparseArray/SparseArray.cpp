@@ -14,6 +14,7 @@ using std::endl;
 //constructor
 template <typename T>
 SparseArray<T>::SparseArray(int c, int r, T v){
+	assert(c>0 && r>0);
 	numRows = r;
 	numColumns = c;
 	defaultValue = v;
@@ -116,9 +117,10 @@ void SparseArray<T>::remove(int c, int r){
 
 template <typename T>
 void SparseArray<T>::print(){
+	assert(numColumns>0 && numRows>0);
 	for (int i=0; i<numColumns; ++i) {
 		for (int j=0; j<numRows; ++j) {
-			cout << access(j,i);
+			cout << access(j,i) << " ";
 		}
 		cout << endl;
 	}

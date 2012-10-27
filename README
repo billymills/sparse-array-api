@@ -2,3 +2,6 @@ c++ implementation of a two dimensional array in 3 ways:
 actual two-dimensional array
 vector of vectors
 sparse array
+
+Note: 	google unit test file is located in /test dir
+		general implementation testing located in /src/testing

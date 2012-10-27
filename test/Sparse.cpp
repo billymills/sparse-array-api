@@ -43,6 +43,18 @@ TEST(TwoDArray, Access) {
 	delete newArray;
 }
 
+TEST(TwoDArray, GetNumRows) {
+	TwoDArray<int>* newArray = new TwoDArray<int>(7,8,0);
+	EXPECT_EQ(8, newArray->getNumRows());
+	delete newArray;
+}
+
+TEST(TwoDArray, GetNumCols) {
+	TwoDArray<int>* newArray = new TwoDArray<int>(7,8,0);
+	EXPECT_EQ(7, newArray->getNumCols());
+	delete newArray;
+}
+
 TEST(TwoDArray, Print) {
 	TwoDArray<int>* newArray = new TwoDArray<int>(10,10,0);
 	newArray->insert(1,2,1);

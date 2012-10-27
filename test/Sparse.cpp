@@ -78,12 +78,30 @@ TEST(Vectors, InsertDouble) {
 	delete newVector;
 }
 
-//TEST(Vectors, Remove) {
+TEST(Vectors, Remove) {
+	Vectors<int>* newVector = new Vectors<int>(5,5,0);
+	newVector->insert(2,3,4);
+	newVector->remove(2,3);
+	EXPECT_EQ(0, newVector->access(2,3));
+	delete newVector;
+}
 
-//}
+TEST(Vectors, Access) {
+	Vectors<std::string>* newVector = new Vectors<std::string>(20,20,"null");
+	EXPECT_EQ("null", newVector->access(10,10));
+	newVector->insert(15,17,"howdy");
+	EXPECT_EQ("howdy", newVector->access(15,17));
+	delete newVector;
+}
 
-//TEST(Vectors, Print) {
-
-//}
-
+TEST(Vectors, Print) {
+	Vectors<int>* newVector = new Vectors<int>(10,10,0);
+	newVector->insert(1,2,1);
+	newVector->insert(9,8,2);
+	newVector->insert(7,2,3);
+	newVector->insert(6,4,4);
+	newVector->insert(0,8,5);
+	newVector->print();
+	delete newVector;
+}
 

@@ -37,7 +37,8 @@ SparseArray<T>::~SparseArray(){
 
 template <typename T>
 void SparseArray<T>::insert(int c, int r, T v){
-	//need an assert here to make sure indices are not out of bounds
+	assert(c>=0 && c<numColumns);
+	assert(r>=0 && r<numRows);
 	Node<T>* newNode = new Node<T>(c, r, v);  //create new node to be inserted
 	Node<T>** currCol = &columns[c]; //ptr to ptr to column array
 	Node<T>** currRow = &rows[r]; //ptr to ptr to row array
@@ -46,7 +47,6 @@ void SparseArray<T>::insert(int c, int r, T v){
 	while(*currRow !=0 && (*currRow)->getColumnNum() < 0){
 		currRow = &((*currRow)->getNextRight());
 	}
-
 	newNode->setNextRight(**currRow);
 	*currRow = newNode;
 	
@@ -54,7 +54,6 @@ void SparseArray<T>::insert(int c, int r, T v){
 	while(*currCol !=0 && (*currCol)->getRowNum() < 0){
 		currCol = &((*currCol)->getNextDown());
 	}
-	
 	newNode->setNextDown(**currCol);
 	*currCol = newNode;
 }
@@ -64,22 +63,64 @@ T SparseArray<T>::access(int c, int r){
 	assert(c>=0 && c<numColumns);
 	assert(r>=0 && r<numRows);
 	Node<T>** currCol = &columns[c];
+	
 	while((*currCol) != 0) {
 		if((*currCol)->getColumnNum() == c && (*currCol)->getRowNum() == r){
 			return (*currCol)->getValue();
 		}
 		currCol = &((*currCol)->getNextDown());
 	}
+	return defaultValue;
 }
 
 template <typename T>
 void SparseArray<T>::remove(int c, int r){
+	/*
+	assert(c>=0 && c<numColumns);
+	assert(r>=0 && r<numRows);
+	
+	//first deal with down pointers
+	Node<T>** currCol = &columns[c];
+	if (*currCol !=0 && (*currCol)->getRowNum()==r){
+		currCol = &((**currCol->getNextDown());
+	}	
+	else {
+		while ((*currCol)->getNextDown() !=0 ){
+			if ((*currCol)->getNextDown()->getRowNum() == r) {
+				Node<T>* colTemp = (*currCol)->getNextDown();
+				currCol->setNextDown(colTemp->getNextDown());
+				//delete temp;
+			}
+		}
+			
+	}
 
+	//next deal with right pointers
+	Node<T>** currRow = &rows[r];
+	if (*currRow !=0 && (*currRow)->getColumnNum()==c){
+		currRow = &((**currRow->getNextRight());
+	}	
+	else {
+		while ((*currRow)->getNextRight() !=0 ){
+			if ((*currRow)->getNextRight()->getColumnNum() == r) {
+				Node<T>* rowTemp = (*currRow)->getNextRight();
+				currRow->setNextRight(rowtemp->getNextRight));
+				//delete temp;
+			}
+		}
+			
+	}
+	*/
 }
 
 template <typename T>
 void SparseArray<T>::print(){
-
+	for (int i=0; i<numColumns; ++i) {
+		for (int j=0; j<numRows; ++j) {
+			cout << access(j,i);
+		}
+		cout << endl;
+	}
 }
 
 template <typename T>

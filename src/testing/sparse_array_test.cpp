@@ -23,7 +23,10 @@ int main(){
 	cout << newSparse->access(1,0) << endl;
 	cout << newSparse->access(4,4) << endl;
 	cout << newSparse->access(0,1) << endl;
-
+	//cout << newSparse->access(5,5) << endl;
+	newSparse->remove(0,0);
+	cout << newSparse->access(0,0) << endl;
+	newSparse->print();	
 	//delete newSparse;
 	return 0;
 }

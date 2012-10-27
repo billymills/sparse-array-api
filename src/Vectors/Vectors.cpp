@@ -15,7 +15,7 @@ using std::vector;
 
 //constructor
 template <typename T>
-Vectors<T>::Vectors(int r, int c, T def){
+Vectors<T>::Vectors(int c, int r, T def){
 	assert(r>0 && c>0);
 	defaultValue = def;
 	row = r;
@@ -35,20 +35,20 @@ Vectors<T>::~Vectors(){
 
 //return value a given indices
 template <typename T>
-T Vectors<T>::access(int r, int c){
+T Vectors<T>::access(int c, int r){
 	return myArray[c][r];
 }
 
 //insert the value v at index r, c
 template <typename T>
-void Vectors<T>::insert(int r, int c, T value){
+void Vectors<T>::insert(int c, int r, T value){
 	assert(r>=0 && c>=0);
 	myArray[c][r] = value;
 }
 
 //set the value at index r, c back to default value
 template <typename T>
-void Vectors<T>::remove(int r, int c){
+void Vectors<T>::remove(int c, int r){
 	assert(r>=0 && c>=0);
 	myArray[c][r] = defaultValue;
 }

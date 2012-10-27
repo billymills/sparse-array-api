@@ -61,14 +61,14 @@ void SparseArray<T>::insert(int c, int r, T v){
 
 template <typename T>
 T SparseArray<T>::access(int c, int r){
+	assert(c>=0 && c<numColumns);
+	assert(r>=0 && r<numRows);
 	Node<T>** currCol = &columns[c];
 	while((*currCol) != 0) {
 		if((*currCol)->getColumnNum() == c && (*currCol)->getRowNum() == r){
 			return (*currCol)->getValue();
 		}
-		else{
-			return defaultValue;
-		}
+		currCol = &((*currCol)->getNextDown());
 	}
 }
 

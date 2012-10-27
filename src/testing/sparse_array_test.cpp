@@ -15,15 +15,15 @@ using std::endl;
 
 int main(){
 	SparseArray<int>* newSparse = new SparseArray<int>(5,5,0);
-	cout << newSparse->getNumRows() << endl;
-	cout << newSparse->getNumColumns() << endl;
-	cout << newSparse->access(0,0) << endl;
 	newSparse->insert(0,0,5);
-	cout << newSparse->access(0,0) << endl;
 	newSparse->insert(1,0,10);
-	cout << newSparse->access(1,0) << endl;
 	newSparse->insert(4,4,15);
+	newSparse->insert(0,1,20);
+	cout << newSparse->access(0,0) << endl;
+	cout << newSparse->access(1,0) << endl;
 	cout << newSparse->access(4,4) << endl;
+	cout << newSparse->access(0,1) << endl;
+
 	//delete newSparse;
 	return 0;
 }

@@ -27,9 +27,11 @@ TEST(TwoDArray, Remove) {
 //}
 
 
-//TEST(Vectors, Insert) {
-
-//}
+TEST(Vectors, Insert) {
+	Vectors<int>* newVector = new Vectors<int>(10, 10, 0);
+	newVector->insert(5,5,5);
+	delete newVector;
+}
 
 //TEST(Vectors, Remove) {
 

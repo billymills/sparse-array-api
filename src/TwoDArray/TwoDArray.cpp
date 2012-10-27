@@ -14,21 +14,20 @@ using std::endl;
 //constructor
 template <typename T>
 TwoDArray<T>::TwoDArray(int r, int c, T def){
+	assert(r>0 && c>0);
 	defaultValue = def;
-	//cout << "in const" << endl;
 	row = r;
 	column = c;
+
 	//create 2D array
 	myArray = new T*[c];
 	for(int i=0; i<c; ++i){
 		myArray[i] = new T[r];
 	}
-	//cout << "array created" << endl;
+
 	//next need to initialize array to default value;
 	for(int j=0; j<c; ++j){
-		//cout << "in initializer" << endl;
 		for(int k=0; k<r; ++k){
-			//cout << "in inner for" << endl;
 			myArray[j][k] = def;
 		}
 	}	
@@ -67,11 +66,22 @@ void TwoDArray<T>::print(){
 	for(int i=0; i<column; ++i){
 
 		for(int j=0; j<row; ++j){
-			cout << myArray[i][j];
+			cout << access(i,j) << " ";
 		}
 		cout << endl;
 	}
 }
 
+template <typename T>
+int TwoDArray<T>::getNumRows(){
+	return row;
+}
+
+template <typename T>
+int TwoDArray<T>::getNumCols(){
+	return column;
+}
+
 template class TwoDArray<int>;
+template class TwoDArray<double>;
 template class TwoDArray<std::string>;

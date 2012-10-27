@@ -28,7 +28,7 @@ Vectors<T>::Vectors(int r, int c, T def){
 //destructor
 template <typename T>
 Vectors<T>::~Vectors(){
-	//delete myArray;
+
 }
 
 //return value a given indices
@@ -55,7 +55,8 @@ void Vectors<T>::print(){
 	for(int i=0; i<column; ++i){
 
 		for(int j=0; j<row; ++j){
-			cout << myArray[i][j];
+			cout << access(j,i) << " ";
+			//cout << myArray[i][j];
 		}
 		cout << endl;
 	}

@@ -4,4 +4,4 @@ vector of vectors
 sparse array
 
 Note: 	google unit test file is located in /test dir
-		general implementation testing located in /src/testing
+		general implementation testing located in /build

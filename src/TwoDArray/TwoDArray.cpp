@@ -45,7 +45,7 @@ TwoDArray<T>::~TwoDArray(){
 //return value a given indices
 template <typename T>
 T TwoDArray<T>::access(int r, int c){
-	return myArray[r][c];
+	return myArray[c][r];
 }
 
 //insert the value v at index r, c

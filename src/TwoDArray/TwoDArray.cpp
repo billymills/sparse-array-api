@@ -13,7 +13,7 @@ using std::endl;
 
 //constructor
 template <typename T>
-TwoDArray<T>::TwoDArray(int r, int c, T def){
+TwoDArray<T>::TwoDArray(int c, int r, T def){
 	assert(r>0 && c>0);
 	defaultValue = def;
 	row = r;
@@ -36,7 +36,7 @@ TwoDArray<T>::TwoDArray(int r, int c, T def){
 //destructor
 template <typename T>
 TwoDArray<T>::~TwoDArray(){
-	for(int i=0;i<row;++i){
+	for(int i=0;i<column;++i){
 		delete[] myArray[i];
 	}
 	delete[] myArray;
@@ -44,19 +44,19 @@ TwoDArray<T>::~TwoDArray(){
 
 //return value a given indices
 template <typename T>
-T TwoDArray<T>::access(int r, int c){
+T TwoDArray<T>::access(int c, int r){
 	return myArray[c][r];
 }
 
 //insert the value v at index r, c
 template <typename T>
-void TwoDArray<T>::insert(int r, int c, T value){
+void TwoDArray<T>::insert(int c, int r, T value){
 	myArray[c][r] = value;
 }
 
 //set the value at index r, c back to default value
 template <typename T>
-void TwoDArray<T>::remove(int r, int c){
+void TwoDArray<T>::remove(int c, int r){
 	myArray[c][r] = defaultValue;
 }
 

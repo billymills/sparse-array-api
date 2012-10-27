@@ -6,6 +6,8 @@
 #include "gtest/gtest.h"
 #include "../src/TwoDArray/TwoDArray.h"
 #include "../src/Vectors/Vectors.h"
+#include "../src/SparseArray/SparseArray.h"
+#include "../src/SparseArray/Node.h"
 #include <string>
 
 TEST(TwoDArray, InsertInt) {
@@ -103,5 +105,12 @@ TEST(Vectors, Print) {
 	newVector->insert(0,8,5);
 	newVector->print();
 	delete newVector;
+}
+
+TEST(Sparse, InsertInt) {
+	SparseArray<int>* newSparse = new SparseArray<int>(5,5,0);
+	newSparse->insert(0,0,5);
+	EXPECT_EQ(5, newSparse->access(0,0));
+	delete newSparse;
 }
 

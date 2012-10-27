@@ -59,7 +59,7 @@ void Vectors<T>::print(){
 	for(int i=0; i<column; ++i){
 
 		for(int j=0; j<row; ++j){
-			cout << access(j,i) << " ";
+			cout << access(i,j) << " ";
 		}
 
 		cout << endl;

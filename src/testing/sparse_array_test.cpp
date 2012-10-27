@@ -22,6 +22,8 @@ int main(){
 	cout << newSparse->access(0,0) << endl;
 	newSparse->insert(1,0,10);
 	cout << newSparse->access(1,0) << endl;
+	newSparse->insert(4,4,15);
+	cout << newSparse->access(4,4) << endl;
 	//delete newSparse;
 	return 0;
 }

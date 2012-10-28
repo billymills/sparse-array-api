@@ -28,31 +28,71 @@ TEST(TwoDArray, Insert) {
 }
 
 TEST(TwoDArray, Remove) {
-	TwoDArray<int>* newArray = new TwoDArray<int>(5,5,0);
-	newArray->insert(2,3,4);
-	newArray->remove(2,3);
-	EXPECT_EQ(0, newArray->access(2,3));
-	delete newArray;
+	TwoDArray<int>* newInt = new TwoDArray<int>(5,5,0);
+	newInt->insert(2,3,4);
+	newInt->remove(2,3);
+	EXPECT_EQ(0, newInt->access(2,3));
+	delete newInt;
+
+	TwoDArray<double>* newDouble = new TwoDArray<double>(3,4,1.0);
+	newDouble->insert(2,1,4.4);
+	newDouble->remove(2,1);
+	EXPECT_EQ(1.0, newDouble->access(2,3));
+	delete newDouble;
+
+	TwoDArray<std::string>* newString = new TwoDArray<std::string>(100,200,"empty");
+	newString->insert(48, 68, "hello");
+	newString->remove(2,3);
+	EXPECT_EQ("hello", newString->access(48,68));
+	delete newString;
 }
 
 TEST(TwoDArray, Access) {
-	TwoDArray<std::string>* newArray = new TwoDArray<std::string>(20,20,"null");
-	EXPECT_EQ("null", newArray->access(10,10));
-	newArray->insert(15,17,"howdy");
-	EXPECT_EQ("howdy", newArray->access(15,17));
-	delete newArray;
+	TwoDArray<int>* newInt = new TwoDArray<int>(24,67,5);
+	EXPECT_EQ(5, newInt->access(10,10));
+	newInt->insert(15,17,100);
+	EXPECT_EQ(100, newInt->access(15,17));
+	delete newInt;
+
+	TwoDArray<double>* newDouble = new TwoDArray<double>(33,54,5.6);
+	EXPECT_EQ(5.6, newDouble->access(12,24));
+	newDouble->insert(13,15,7.8);
+	EXPECT_EQ(7.8, newDouble->access(13,15));
+	delete newDouble;
+	
+	TwoDArray<std::string>* newString = new TwoDArray<std::string>(20,20,"null");
+	EXPECT_EQ("null", newString->access(10,10));
+	newString->insert(15,17,"howdy");
+	EXPECT_EQ("howdy", newString->access(15,17));
+	delete newString;
 }
 
 TEST(TwoDArray, GetNumRows) {
 	TwoDArray<int>* newArray = new TwoDArray<int>(7,8,0);
 	EXPECT_EQ(8, newArray->getNumRows());
 	delete newArray;
+
+	TwoDArray<double>* newDouble = new TwoDArray<double>(80,80,0.0);
+	EXPECT_EQ(80, newDouble->getNumRows());
+	delete newDouble;
+
+	TwoDArray<std::string>* newString = new TwoDArray<std::string>(49,78,"hi");
+	EXPECT_EQ(78, newString->getNumRows());
+	delete newString;
 }
 
 TEST(TwoDArray, GetNumCols) {
 	TwoDArray<int>* newArray = new TwoDArray<int>(7,8,0);
 	EXPECT_EQ(7, newArray->getNumCols());
 	delete newArray;
+	
+	TwoDArray<double>* newDouble = new TwoDArray<double>(562,786,1.2);
+	EXPECT_EQ(562, newDouble->getNumCols());
+	delete newDouble;
+
+	TwoDArray<std::string>* newString = new TwoDArray<std::string>(5,6, "bye");
+	EXPECT_EQ(5, newString->getNumCols());
+	delete newString;
 }
 
 TEST(TwoDArray, Print) {
@@ -90,6 +130,18 @@ TEST(Vectors, Remove) {
 	newVector->remove(2,3);
 	EXPECT_EQ(0, newVector->access(2,3));
 	delete newVector;
+	
+	Vectors<double>* newDouble = new Vectors<double>(5,5,0.0);
+	newDouble->insert(2,3,4.4);
+	newDouble->remove(2,3);
+	EXPECT_EQ(0.0, newDouble->access(2,3));
+	delete newDouble;
+	
+	Vectors<std::string>* newString = new Vectors<std::string>(5,5,"empty");
+	newString->insert(2,3,"yes");
+	newString->remove(2,3);
+	EXPECT_EQ("empty", newString->access(2,3));
+	delete newString;
 }
 
 TEST(Vectors, Access) {
@@ -98,6 +150,18 @@ TEST(Vectors, Access) {
 	newVector->insert(15,17,"howdy");
 	EXPECT_EQ("howdy", newVector->access(15,17));
 	delete newVector;
+
+	Vectors<int>* newInt = new Vectors<int>(20,21,0);
+	EXPECT_EQ(0, newInt->access(10,10));
+	newInt->insert(15,17,90);
+	EXPECT_EQ(90, newInt->access(15,17));
+	delete newInt;
+
+	Vectors<double>* newDouble = new Vectors<double>(21,20,0.0);
+	EXPECT_EQ(0.0, newDouble->access(10,10));
+	newDouble->insert(15,17,4.5);
+	EXPECT_EQ(4.5, newDouble->access(15,17));
+	delete newDouble;
 }
 
 TEST(Vectors, GetNumRows) {
@@ -113,12 +177,14 @@ TEST(Vectors, GetNumCols) {
 }
 
 TEST(Vectors, Print) {
-	Vectors<int>* newVector = new Vectors<int>(10,10,0);
-	newVector->insert(1,2,1);
-	newVector->insert(9,8,2);
-	newVector->insert(7,2,3);
-	newVector->insert(6,4,4);
-	newVector->insert(0,8,5);
+	Vectors<std::string>* newVector = new Vectors<std::string>(15,15,"oo");
+	newVector->insert(1,2,"xx");
+	newVector->insert(9,8,"xx");
+	newVector->insert(7,2,"xx");
+	newVector->insert(6,4,"xx");
+	newVector->insert(0,8,"xx");
+	newVector->insert(10,12,"xx");
+	newVector->insert(3,5,"xx");
 	newVector->print();
 	delete newVector;
 }
@@ -141,15 +207,25 @@ TEST(Sparse, Insert) {
 	delete newString;
 }
 
-/*
 TEST(Sparse, Remove) {
 	SparseArray<int>* newSparse = new SparseArray<int>(5,5,0);
 	newSparse->insert(2,3,4);
-	newSparser->remove(2,3);
+	newSparse->remove(2,3);
 	EXPECT_EQ(0, newSparse->access(2,3));
 	delete newSparse;
+
+	SparseArray<double>* newDouble = new SparseArray<double>(5,7,0.0);
+	newDouble->insert(2,3,4.9);
+	newDouble->remove(2,3);
+	EXPECT_EQ(0.0, newDouble->access(2,3));
+	delete newDouble;
+
+	SparseArray<std::string>* newString = new SparseArray<std::string>(321,678,"yes");
+	newString->insert(2,3,"no");
+	newString->remove(2,3);
+	EXPECT_EQ("yes", newString->access(2,3));
+	delete newString;
 }
-*/
 
 TEST(Sparse, Access) {
 	SparseArray<std::string>* newSparse = new SparseArray<std::string>(20,20,"null");
@@ -157,6 +233,18 @@ TEST(Sparse, Access) {
 	newSparse->insert(15,17,"howdy");
 	EXPECT_EQ("howdy", newSparse->access(15,17));
 	delete newSparse;
+
+	SparseArray<int>* newInt = new SparseArray<int>(20,20,7);
+	EXPECT_EQ(7, newInt->access(10,10));
+	newInt->insert(15,17,14);
+	EXPECT_EQ(14, newInt->access(15,17));
+	delete newInt;
+	
+	SparseArray<double>* newDouble = new SparseArray<double>(20,20,5.5);
+	EXPECT_EQ(5.5, newDouble->access(10,10));
+	newDouble->insert(15,17,6.6);
+	EXPECT_EQ(6.6, newDouble->access(15,17));
+	delete newDouble;
 }
 
 TEST(Sparse, GetNumRows) {
@@ -166,18 +254,22 @@ TEST(Sparse, GetNumRows) {
 }
 
 TEST(Sparse, GetNumCols) {
-	SparseArray<int>* newSparse = new SparseArray<int>(7,8,0);
-	EXPECT_EQ(7, newSparse->getNumColumns());
+	SparseArray<int>* newSparse = new SparseArray<int>(114,35,0);
+	EXPECT_EQ(114, newSparse->getNumColumns());
 	delete newSparse;
 }
 
 TEST(Sparse, Print) {
-	SparseArray<int>* newSparse = new SparseArray<int>(10,10,0);
-	newSparse->insert(1,2,1);
-	newSparse->insert(9,8,2);
-	newSparse->insert(7,2,3);
-	newSparse->insert(6,4,4);
-	newSparse->insert(0,8,5);
+	SparseArray<double>* newSparse = new SparseArray<double>(25,25,1.1);
+	newSparse->insert(1,2,1.2);
+	newSparse->insert(9,8,2.2);
+	newSparse->insert(7,2,3.3);
+	newSparse->insert(6,4,4.4);
+	newSparse->insert(0,8,5.5);
+	newSparse->insert(19,14,6.6);
+	newSparse->insert(20,20,7.7);
+	newSparse->insert(14,6,8.8);
+	newSparse->insert(24,24,9.9);
 	newSparse->print();
 	delete newSparse;
 }

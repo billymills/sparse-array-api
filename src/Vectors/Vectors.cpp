@@ -58,7 +58,7 @@ void Vectors<T>::print(){
 	assert(column>0 && row>0);
 	for(int i=0; i<column; ++i){
 		for(int j=0; j<row; ++j){
-			cout << access(i,j) << " ";
+			cout << access(j,i) << " ";
 		}
 		cout << endl;
 	}

@@ -34,7 +34,8 @@ SparseArray<T>::SparseArray(int c, int r, T v){
 
 template <typename T>
 SparseArray<T>::~SparseArray(){
-
+	delete [] columns;
+	delete [] rows;
 }
 
 template <typename T>
@@ -90,19 +91,7 @@ void SparseArray<T>::remove(int c, int r){
 	//when the matching row is found reassign pointer
 	Node<T>* colTemp = (*currCol)->getNextDown();
 	(*currCol)=colTemp;
-/*
-	else {
-		while ((*currCol)->getNextDown() !=0 ){
-			if ((*currCol)->getNextDown()->getRowNum() == r) {
-				Node<T>* colTemp = (*currCol)->getNextDown();
-				//(*currCol)->setNextDown(colTemp->getNextDown());
-				(*currCol) = colTemp;
-				//delete colTemp;
-			}
-		}
-			
-	}
-*/
+	
 	//next deal with right pointers
 	Node<T>** currRow = &rows[r];
 	while(*currRow !=0 && (*currRow)->getColumnNum() != c){
@@ -110,20 +99,6 @@ void SparseArray<T>::remove(int c, int r){
 	}	
 	Node<T>* rowTemp = (*currRow)->getNextRight();
 	(*currRow) = rowTemp;
-
-/*
-	else {
-		while ((*currRow)->getNextRight() != 0){
-			if ((*currRow)->getNextRight()->getColumnNum() == r) {
-				Node<T>* rowTemp = (*currRow)->getNextRight();
-				//(*currRow)->setNextRight(rowTemp->getNextRight());
-				(*currRow) = rowTemp;
-				//delete rowTemp;
-			}
-		}
-			
-	}
-*/	
 }
 
 template <typename T>

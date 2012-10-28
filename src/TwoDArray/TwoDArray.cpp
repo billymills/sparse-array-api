@@ -65,7 +65,7 @@ template <typename T>
 void TwoDArray<T>::print(){
 	for(int i=0; i<column; ++i){
 		for(int j=0; j<row; ++j){
-			cout << access(i,j) << " ";
+			cout << access(j,i) << " ";
 		}
 		cout << endl;
 	}

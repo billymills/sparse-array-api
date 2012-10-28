@@ -213,6 +213,13 @@ TEST(Sparse, Remove) {
 	newSparse->remove(2,3);
 	EXPECT_EQ(0, newSparse->access(2,3));
 	delete newSparse;
+	
+/*
+	SparseArray<int>* newArray = new SparseArray<int>(5,5,0);
+	newArray->insert(4,4,1);
+	newArray->remove(4,4);
+	EXPECT_EQ(1, newArray->access(0,0));
+*/
 
 	SparseArray<double>* newDouble = new SparseArray<double>(5,7,0.0);
 	newDouble->insert(2,3,4.9);

@@ -88,17 +88,17 @@ void SparseArray<T>::remove(int c, int r){
 	while (*currCol !=0 && (*currCol)->getRowNum() != r){
 		currCol = &((*currCol)->getNextDown());
 	}
-	//when the matching row is found reassign pointer
+	//when the matching row is found reassign pointer	
 	Node<T>* colTemp = (*currCol)->getNextDown();
-	(*currCol)=colTemp;
+	*currCol = colTemp;
 	
 	//next deal with right pointers
 	Node<T>** currRow = &rows[r];
 	while(*currRow !=0 && (*currRow)->getColumnNum() != c){
 		currRow = &((*currRow)->getNextRight());
 	}	
-	Node<T>* rowTemp = (*currRow)->getNextRight();
-	(*currRow) = rowTemp;
+	Node<T>* rowTemp = (*currRow)->getNextRight();	
+	*currRow = rowTemp;	
 }
 
 template <typename T>

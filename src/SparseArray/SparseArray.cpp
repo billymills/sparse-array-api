@@ -85,20 +85,22 @@ void SparseArray<T>::remove(int c, int r){
 	//first deal with down pointers
 	Node<T>** currCol = &columns[c];
 	//if the column is not empty and the row doesn't match move to the next node
-	while (*currCol !=0 && (*currCol)->getRowNum() != r){
+	while (*currCol !=0 && (*currCol)->getRowNum() < r){
 		currCol = &((*currCol)->getNextDown());
 	}
 	//when the matching row is found reassign pointer	
-	Node<T>* colTemp = (*currCol)->getNextDown();
-	*currCol = colTemp;
+	if((*currCol)->getRowNum() == r){
+		*currCol = (*currCol)->getNextDown();	
+	}
 	
 	//next deal with right pointers
 	Node<T>** currRow = &rows[r];
-	while(*currRow !=0 && (*currRow)->getColumnNum() != c){
+	while(*currRow !=0 && (*currRow)->getColumnNum() < c){
 		currRow = &((*currRow)->getNextRight());
-	}	
-	Node<T>* rowTemp = (*currRow)->getNextRight();	
-	*currRow = rowTemp;	
+	}
+	if((*currRow)->getColumnNum() == c){	
+		*currRow = (*currRow)->getNextRight();
+	}
 }
 
 template <typename T>

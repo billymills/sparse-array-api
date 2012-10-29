@@ -51,16 +51,25 @@ void SparseArray<T>::insert(int c, int r, T v){
 	while(*currRow !=0 && (*currRow)->getColumnNum() < c){
 		currRow = &((*currRow)->getNextRight());
 	}
-	newNode->setNextRight(**currRow);
-	*currRow = newNode;
+	if(*currRow != 0 && (*currRow)->getColumnNum() == c){
+		newNode->setNextRight(**currRow);
+		*currRow = newNode;
+	}
+	else {
+		*currRow = newNode;
+	}
 	
 	//check for down insertion point
 	while(*currCol !=0 && (*currCol)->getRowNum() < c){
 		currCol = &((*currCol)->getNextDown());
 	}
-	newNode->setNextDown(**currCol);
-	*currCol = newNode;
-
+	if(*currCol != 0 && (*currCol)->getRowNum() == r){
+		newNode->setNextDown(**currCol);
+		*currCol = newNode;
+	}
+	else {
+		*currCol = newNode;
+	}
 }
 
 template <typename T>

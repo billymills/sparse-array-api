@@ -34,6 +34,11 @@ SparseArray<T>::SparseArray(int c, int r, T v){
 
 template <typename T>
 SparseArray<T>::~SparseArray(){
+//	for(int i=0;i<numColumns;++i){
+//		for(int j=0;i<numRows;++j){
+//			remove(i,j);
+//		}
+//	}
 	delete [] columns;
 	delete [] rows;
 }
@@ -94,23 +99,24 @@ void SparseArray<T>::remove(int c, int r){
 	assert(r>=0 && r<numRows);
 	
 	//first deal with down pointers
-	Node<T>** currCol = &columns[c];
-	//if the column is not empty and the row doesn't match move to the next node
-	while (*currCol !=0 && (*currCol)->getRowNum() < r){
-		currCol = &((*currCol)->getNextDown());
+	Node<T>** currCol;
+	for(currCol = &columns[c];*currCol != 0;currCol = &(*currCol)->getNextDown()){
+		if((*currCol)->getRowNum() == r){
+			*currCol = (*currCol)->getNextDown();
+		}
+		if(*currCol == 0){
+			return;
+		}	
 	}
-	//when the matching row is found reassign pointer	
-	if((*currCol)->getRowNum() == r){
-		*currCol = (*currCol)->getNextDown();	
-	}
-	
-	//next deal with right pointers
-	Node<T>** currRow = &rows[r];
-	while(*currRow !=0 && (*currRow)->getColumnNum() < c){
-		currRow = &((*currRow)->getNextRight());
-	}
-	if((*currRow)->getColumnNum() == c){	
-		*currRow = (*currRow)->getNextRight();
+	//rows
+	Node<T>** currRow;
+	for(currRow = &rows[r];*currRow != 0;currRow = &(*currRow)->getNextRight()){
+		if((*currRow)->getColumnNum() == c){
+			*currRow = (*currRow)->getNextRight();
+		}
+		if(*currRow == 0){
+			return;
+		}
 	}
 }
 

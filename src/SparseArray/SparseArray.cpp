@@ -98,25 +98,27 @@ void SparseArray<T>::remove(int c, int r){
 	assert(c>=0 && c<numColumns);
 	assert(r>=0 && r<numRows);
 	
-	//first deal with down pointers
-	Node<T>** currCol;
-	for(currCol = &columns[c];*currCol != 0;currCol = &(*currCol)->getNextDown()){
-		if((*currCol)->getRowNum() == r){
-			*currCol = (*currCol)->getNextDown();
-		}
-		if(*currCol == 0){
-			return;
-		}	
+	Node<T>** currCol = &columns[c];
+	Node<T>** currRow = &rows[r];
+
+	//deal with pointer in down direction
+	while(*currCol !=0 && (*currCol)->getRowNum() < r){
+		currCol = &((*currCol)->getNextDown());
 	}
-	//rows
-	Node<T>** currRow;
-	for(currRow = &rows[r];*currRow != 0;currRow = &(*currRow)->getNextRight()){
-		if((*currRow)->getColumnNum() == c){
-			*currRow = (*currRow)->getNextRight();
-		}
-		if(*currRow == 0){
-			return;
-		}
+	if(*currCol !=0 && (*currCol)->getRowNum() == r){
+		Node<T>* tempCol = (*currCol)->getNextDown();
+		*currCol = tempCol;
+		delete tempCol;
+	}		
+	
+	//deal with pointer in right direction
+	while(*currRow !=0 && (*currRow)->getColumnNum() < c){
+		currRow = &((*currRow)->getNextRight());
+	}
+	if(*currRow !=0 && (*currRow)->getColumnNum() == c){
+		Node<T>* tempRow = (*currRow)->getNextRight();
+		*currRow = tempRow;
+		delete tempRow;
 	}
 }
 

@@ -42,23 +42,25 @@ template <typename T>
 void SparseArray<T>::insert(int c, int r, T v){
 	assert(c>=0 && c<numColumns);
 	assert(r>=0 && r<numRows);
+
 	Node<T>* newNode = new Node<T>(c, r, v);  //create new node to be inserted
 	Node<T>** currCol = &columns[c]; //ptr to ptr to column array
 	Node<T>** currRow = &rows[r]; //ptr to ptr to row array
 	
 	//check for right insertion point
-	while(*currRow !=0 && (*currRow)->getColumnNum() < 0){
+	while(*currRow !=0 && (*currRow)->getColumnNum() < c){
 		currRow = &((*currRow)->getNextRight());
 	}
 	newNode->setNextRight(**currRow);
 	*currRow = newNode;
 	
 	//check for down insertion point
-	while(*currCol !=0 && (*currCol)->getRowNum() < 0){
+	while(*currCol !=0 && (*currCol)->getRowNum() < c){
 		currCol = &((*currCol)->getNextDown());
 	}
 	newNode->setNextDown(**currCol);
 	*currCol = newNode;
+
 }
 
 template <typename T>

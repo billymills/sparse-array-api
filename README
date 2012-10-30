@@ -4,7 +4,7 @@ vector of vectors
 sparse array
 
 Notes: 	
-
-	google unit test file is located in /test dir
+	run 'make' in root directory
+	executable google test file 'sparse_test' will located in /test dir
 	general implementation testing located in /build
 	unresolved issue in sparse array remove method - problem at edges of array

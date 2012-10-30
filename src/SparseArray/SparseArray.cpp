@@ -34,11 +34,13 @@ SparseArray<T>::SparseArray(int c, int r, T v){
 
 template <typename T>
 SparseArray<T>::~SparseArray(){
-//	for(int i=0;i<numColumns;++i){
-//		for(int j=0;i<numRows;++j){
-//			remove(i,j);
-//		}
-//	}
+	for(int i=0;i<numColumns;++i){
+		for(int j=0;j<numRows;++j){
+			while(access(i,j) != defaultValue){
+				remove(i,j);
+			}
+		}
+	}
 	delete [] columns;
 	delete [] rows;
 }
